@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Vastu Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--color-background-light);
+      color: var(--color-text-dark);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    :root {
+      --color-primary: #26A69A;
+      --color-accent: #FFC107;
+      --color-secondary: #37474F;
+      --color-background-light: #F8F8F8;
+      --color-text-dark: #333333;
+      --color-text-muted: #616161;
+    }
+    .text-primary { color: var(--color-primary); }
+    .bg-primary { background-color: var(--color-primary); }
+    .text-accent { color: var(--color-accent); }
+    .bg-accent { background-color: var(--color-accent); }
+    .text-secondary { color: var(--color-secondary); }
+    .bg-secondary { background-color: var(--color-secondary); }
+    .bg-background-light { background-color: var(--color-background-light); }
+    .text-text-dark { color: var(--color-text-dark); }
+    .text-text-muted { color: var(--color-text-muted); }
+    .card-hover-effect {
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      border-radius: 1rem;
+    }
+    .card-hover-effect:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+      border-color: var(--color-accent);
+    }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s, transform 0.9s;
+    }
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .animate-fade-in {
+      opacity: 0;
+      transition: opacity 1.5s;
+    }
+    .animate-fade-in.is-visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="text-text-dark">
+  <!-- Header Section -->
+  <header class="bg-white shadow-lg py-0.5 px-6 md:px-8 lg:px-12 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between header-nav-container">
+      <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+        <a href="index.html" class="text-xl md:text-3xl font-extrabold text-primary tracking-wide vastu-designer-title">VASTU DESIGNER</a>
+        <button id="hamburger-button" class="hamburger-button md:hidden text-text-dark text-2xl focus:outline-none">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <nav id="mobile-menu" class="flex flex-wrap justify-center md:justify-end gap-x-4 lg:gap-x-8 gap-y-2 text-lg font-medium">
+        <a href="index.html#home" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Home</a>
+        <a href="about.html" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">About Us</a>
+        <a href="services.html" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Our Services</a>
+        <a href="contact.html" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section-container" style="min-height: 60vh; background-image: url('images/temple.png'), url('LAYOUT.png'); background-size: cover, 60vh; background-position: center, center; background-repeat: no-repeat, no-repeat;">
+    <div class="max-w-3xl mx-auto px-4 hero-content">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg animate-fade-in">About Vastu Designer</h1>
+      <p class="text-xl md:text-2xl text-white mb-8 animate-fade-in" style="transition-delay: 0.2s;">Bridging Ancient Wisdom with Modern Living</p>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="py-16 bg-background-light animate-on-scroll">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+      <img src="images/about-story-placeholder.png" alt="Our Story" class="w-64 h-64 object-cover rounded-2xl shadow-lg border-4 border-primary bg-white" />
+      <div>
+        <h2 class="text-3xl font-bold text-primary mb-4">Our Story</h2>
+        <p class="text-lg text-text-dark mb-4">Founded in 2010, Vastu Designer emerged from a deep understanding that modern living often disconnects us from the natural harmony that our ancestors instinctively knew. Our journey began when our founder, Acharya Rajesh Kumar, witnessed the transformative power of Vastu Shastra in his own life.</p>
+        <p class="text-lg text-text-dark mb-4">After experiencing remarkable improvements in health, relationships, and prosperity after implementing Vastu principles in his home, he dedicated his life to sharing this ancient wisdom with others. What started as a personal transformation has now touched thousands of lives across India.</p>
+        <p class="text-lg text-text-dark">Today, Vastu Designer stands as a bridge between ancient Vedic wisdom and contemporary lifestyle needs, helping families and businesses create spaces that nurture their dreams and aspirations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="py-16 bg-white animate-on-scroll">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-primary mb-8">Our Mission & Vision</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-background-light rounded-xl shadow-lg p-8 border-t-4 border-primary">
+          <h3 class="text-xl font-bold text-secondary mb-2">Mission</h3>
+          <p class="text-text-dark">To empower individuals and organizations with the knowledge and tools to create harmonious living and working environments that promote health, prosperity, and spiritual well-being.</p>
+        </div>
+        <div class="bg-background-light rounded-xl shadow-lg p-8 border-t-4 border-primary">
+          <h3 class="text-xl font-bold text-secondary mb-2">Vision</h3>
+          <p class="text-text-dark">To make Vastu Shastra accessible to everyone, helping create a world where every space resonates with positive energy and supports the highest potential of its inhabitants.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-16 bg-background-light animate-on-scroll">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-primary text-center mb-12">Our Expert Team</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center border-t-4 border-primary">
+          <img src="images/team-founder.jpg" alt="Acharya Rajesh Kumar" class="w-24 h-24 mb-4 rounded-full border-2 border-primary bg-background-light object-cover" />
+          <h3 class="text-xl font-bold text-secondary mb-2">Acharya Rajesh Kumar</h3>
+          <p class="text-primary font-semibold mb-2">Founder & Chief Vastu Consultant</p>
+          <p class="text-text-muted text-sm text-center">25+ years of experience, Master's in Sanskrit, studied under renowned Vastu masters.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center border-t-4 border-accent">
+          <img src="images/team-consultant.jpg" alt="Dr. Priya Sharma" class="w-24 h-24 mb-4 rounded-full border-2 border-accent bg-background-light object-cover" />
+          <h3 class="text-xl font-bold text-secondary mb-2">Dr. Priya Sharma</h3>
+          <p class="text-accent font-semibold mb-2">Senior Vastu Consultant</p>
+          <p class="text-text-muted text-sm text-center">Ph.D. in Architecture, specializes in Traditional Indian Architecture and Vastu integration.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center border-t-4 border-primary">
+          <img src="images/team-researcher.jpg" alt="Acharya Amit Patel" class="w-24 h-24 mb-4 rounded-full border-2 border-primary bg-background-light object-cover" />
+          <h3 class="text-xl font-bold text-secondary mb-2">Acharya Amit Patel</h3>
+          <p class="text-primary font-semibold mb-2">Research & Development</p>
+          <p class="text-text-muted text-sm text-center">Publishes on modern Vastu applications and research, bridges tradition and innovation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-16 bg-white text-center animate-on-scroll">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold text-primary mb-4">Ready to Experience the Power of Vastu?</h2>
+      <p class="text-xl text-text-dark mb-8">Join thousands of families who have transformed their lives through Vastu principles.</p>
+      <a href="contact.html" class="btn-primary text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-accent transition">Book Your Consultation</a>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-secondary text-white py-10 text-center">
+    <div class="max-w-7xl mx-auto px-4">
+      <img src="https://placehold.co/40x40/26A69A/FFFFFF?text=VD" alt="Vastu Designer Logo" class="w-10 h-10 mx-auto mb-6 opacity-80 rounded-full" />
+      <div class="mb-3">
+        <a href="index.html" class="font-bold text-accent text-2xl tracking-wide">VASTU DESIGNER</a>
+      </div>
+      <p class="text-sm text-gray-300 mb-4">&copy; 2024 Vastu Designer. All rights reserved.</p>
+      <div class="flex justify-center space-x-8 text-sm font-medium">
+        <a href="privacy.html" class="hover:text-accent transition duration-200">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-accent transition duration-200">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-triggered Animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      document.querySelectorAll('.animate-on-scroll, .animate-fade-in').forEach(element => {
+        observer.observe(element);
+      });
+      // Mobile Navigation Toggle
+      const hamburgerButton = document.getElementById('hamburger-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (hamburgerButton && mobileMenu) {
+        hamburgerButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('is-open');
+          const icon = hamburgerButton.querySelector('i');
+          if (mobileMenu.classList.contains('is-open')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('is-open');
+            hamburgerButton.querySelector('i').classList.remove('fa-times');
+            hamburgerButton.querySelector('i').classList.add('fa-bars');
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

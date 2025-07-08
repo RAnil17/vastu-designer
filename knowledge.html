@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vastu Knowledge | Vastu Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Roboto', sans-serif; background: #f8f5f0; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    .lotus { width: 60px; margin: 0 auto; display: block; }
+    .section-bg { background: url('images/bg-pattern.png'), #f8f5f0; background-size: cover; background-repeat: repeat; }
+  </style>
+</head>
+<body class="text-brown-900">
+  <!-- Header -->
+  <header class="bg-[#f8f5f0] border-b border-orange-200 py-4 flex flex-col items-center relative">
+    <img src="Vastu Lotus.jpg" alt="Vastu Lotus Icon" class="lotus mb-2 rounded-full" />
+    <nav class="flex space-x-8 text-lg font-semibold">
+      <a href="index.html" class="hover:text-orange-700 transition">Home</a>
+      <a href="about.html" class="hover:text-orange-700 transition">About</a>
+      <a href="services.html" class="hover:text-orange-700 transition">Services</a>
+      <a href="knowledge.html" class="text-orange-700 hover:text-orange-900 transition">Vastu Knowledge</a>
+      <a href="contact.html" class="hover:text-orange-700 transition">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="section-bg py-16 md:py-24 text-center relative">
+    <div class="max-w-2xl mx-auto">
+      <img src="images/knowledge-hero-placeholder.png" alt="Vastu Knowledge" class="mx-auto w-40 md:w-56 mb-8 rounded-full shadow-lg border-4 border-orange-200 bg-white" />
+      <h1 class="text-5xl md:text-6xl font-bold text-orange-900 mb-4 drop-shadow">Vastu Knowledge</h1>
+      <p class="text-xl md:text-2xl text-orange-800 mb-8">Master the Ancient Science of Harmonious Living</p>
+    </div>
+    <img src="Vastu Lotus.jpg" alt="Vastu Lotus Divider" class="mx-auto mt-12 w-16 opacity-70 rounded-full" />
+  </section>
+
+  <!-- Table of Contents -->
+  <section class="py-8 bg-white px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-orange-800 mb-6">Quick Navigation</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="#fundamentals" class="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition-colors duration-200">
+          <h3 class="font-semibold text-orange-700">Fundamentals</h3>
+          <p class="text-sm text-gray-600">Basic principles and elements</p>
+        </a>
+        <a href="#directions" class="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition-colors duration-200">
+          <h3 class="font-semibold text-orange-700">Directions</h3>
+          <p class="text-sm text-gray-600">Eight directions and their significance</p>
+        </a>
+        <a href="#room-guidance" class="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition-colors duration-200">
+          <h3 class="font-semibold text-orange-700">Room Guidance</h3>
+          <p class="text-sm text-gray-600">Room-by-room Vastu tips</p>
+        </a>
+        <a href="#remedies" class="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition-colors duration-200">
+          <h3 class="font-semibold text-orange-700">Remedies</h3>
+          <p class="text-sm text-gray-600">Common Vastu corrections</p>
+        </a>
+        <a href="#colors" class="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition-colors duration-200">
+          <h3 class="font-semibold text-orange-700">Colors</h3>
+          <p class="text-sm text-gray-600">Color psychology in Vastu</p>
+        </a>
+        <a href="#materials" class="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition-colors duration-200">
+          <h3 class="font-semibold text-orange-700">Materials</h3>
+          <p class="text-sm text-gray-600">Natural materials and their benefits</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fundamentals Section -->
+  <section id="fundamentals" class="py-16 bg-orange-50 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Vastu Fundamentals</h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-bold text-orange-700 mb-6">What is Vastu Shastra?</h3>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+            Vastu Shastra is an ancient Indian science of architecture and design that harmonizes the five elements of nature with human dwellings. The word "Vastu" means dwelling or building, and "Shastra" means science or knowledge.
+          </p>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+            This 5,000-year-old science is based on the principle that everything in the universe is interconnected through energy. Vastu helps create spaces that resonate with natural energies, promoting health, prosperity, and spiritual well-being.
+          </p>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            The fundamental belief is that when we live in harmony with nature's laws, we experience peace, success, and abundance in all aspects of life.
+          </p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold text-orange-700 mb-6">The Five Elements (Panchabhutas)</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 text-sm font-bold">1</div>
+              <div>
+                <h4 class="font-semibold text-gray-800 mb-1">Earth (Prithvi)</h4>
+                <p class="text-gray-600 text-sm">Represents stability, foundation, and material wealth. Associated with the southwest direction.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 text-sm font-bold">2</div>
+              <div>
+                <h4 class="font-semibold text-gray-800 mb-1">Water (Jal)</h4>
+                <p class="text-gray-600 text-sm">Symbolizes flow, purification, and emotional well-being. Associated with the northeast direction.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 text-sm font-bold">3</div>
+              <div>
+                <h4 class="font-semibold text-gray-800 mb-1">Fire (Agni)</h4>
+                <p class="text-gray-600 text-sm">Represents energy, transformation, and power. Associated with the southeast direction.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 text-sm font-bold">4</div>
+              <div>
+                <h4 class="font-semibold text-gray-800 mb-1">Air (Vayu)</h4>
+                <p class="text-gray-600 text-sm">Stands for movement, communication, and mental clarity. Associated with the northwest direction.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 text-sm font-bold">5</div>
+              <div>
+                <h4 class="font-semibold text-gray-800 mb-1">Space (Akash)</h4>
+                <p class="text-gray-600 text-sm">Embodies expansion, consciousness, and spiritual growth. Associated with the center (Brahmasthan).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Directions Section -->
+  <section id="directions" class="py-16 bg-white px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">The Eight Directions (Ashta Dikpalas)</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-orange-50 p-6 rounded-lg text-center">
+          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold">N</span>
+          </div>
+          <h3 class="text-xl font-bold text-orange-700 mb-2">North (Uttar)</h3>
+          <p class="text-sm text-gray-600 mb-2">Wealth & Prosperity</p>
+          <p class="text-xs text-gray-500 mb-2">Ruled by Kuber</p>
+          <p class="text-xs text-gray-600">Element: Water</p>
+          <p class="text-xs text-gray-600 mt-2">Ideal for: Treasury, cash box, water sources</p>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg text-center">
+          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold">S</span>
+          </div>
+          <h3 class="text-xl font-bold text-orange-700 mb-2">South (Dakshin)</h3>
+          <p class="text-sm text-gray-600 mb-2">Strength & Stability</p>
+          <p class="text-xs text-gray-500 mb-2">Ruled by Yama</p>
+          <p class="text-xs text-gray-600">Element: Earth</p>
+          <p class="text-xs text-gray-600 mt-2">Ideal for: Master bedroom, heavy furniture</p>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg text-center">
+          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold">E</span>
+          </div>
+          <h3 class="text-xl font-bold text-orange-700 mb-2">East (Purva)</h3>
+          <p class="text-sm text-gray-600 mb-2">Health & Family</p>
+          <p class="text-xs text-gray-500 mb-2">Ruled by Indra</p>
+          <p class="text-xs text-gray-600">Element: Air</p>
+          <p class="text-xs text-gray-600 mt-2">Ideal for: Main entrance, prayer room</p>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg text-center">
+          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold">W</span>
+          </div>
+          <h3 class="text-xl font-bold text-orange-700 mb-2">West (Paschim)</h3>
+          <p class="text-sm text-gray-600 mb-2">Success & Fame</p>
+          <p class="text-xs text-gray-500 mb-2">Ruled by Varun</p>
+          <p class="text-xs text-gray-600">Element: Water</p>
+          <p class="text-xs text-gray-600 mt-2">Ideal for: Children's room, study area</p>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg text-center">
+          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold">NE</span>
+          </div>
+          <h3 class="text-xl font-bold text-orange-700 mb-2">Northeast (Ishanya)</h3>
+          <p class="text-sm text-gray-600 mb-2">Spiritual Growth</p>
+          <p class="text-xs text-gray-500 mb-2">Ruled by Ishwar</p>
+          <p class="text-xs text-gray-600">Element: Water</p>
+          <p class="text-xs text-gray-600 mt-2">Ideal for: Prayer room, meditation</p>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg text-center">
+          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold">NW</span>
+          </div>
+          <h3 class="text-xl font-bold text-orange-700 mb-2">Northwest (Vayavya)</h3>
+          <p class="text-sm text-gray-600 mb-2">Relationships</p>
+          <p class="text-xs text-gray-500 mb-2">Ruled by Vayu</p>
+          <p class="text-xs text-gray-600">Element: Air</p>
+          <p class="text-xs text-gray-600 mt-2">Ideal for: Guest room, dining area</p>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg text-center">
+          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold">SE</span>
+          </div>
+          <h3 class="text-xl font-bold text-orange-700 mb-2">Southeast (Agneya)</h3>
+          <p class="text-sm text-gray-600 mb-2">Energy & Power</p>
+          <p class="text-xs text-gray-500 mb-2">Ruled by Agni</p>
+          <p class="text-xs text-gray-600">Element: Fire</p>
+          <p class="text-xs text-gray-600 mt-2">Ideal for: Kitchen, electrical items</p>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg text-center">
+          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold">SW</span>
+          </div>
+          <h3 class="text-xl font-bold text-orange-700 mb-2">Southwest (Nairutya)</h3>
+          <p class="text-sm text-gray-600 mb-2">Stability & Support</p>
+          <p class="text-xs text-gray-500 mb-2">Ruled by Nairut</p>
+          <p class="text-xs text-gray-600">Element: Earth</p>
+          <p class="text-xs text-gray-600 mt-2">Ideal for: Master bedroom, storage</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Room Guidance Section -->
+  <section id="room-guidance" class="py-16 bg-orange-100 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Room-by-Room Vastu Guidance</h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Main Entrance</h3>
+          <div class="space-y-3">
+            <p class="text-gray-700"><strong>Ideal Direction:</strong> North, East, or Northeast</p>
+            <p class="text-gray-700"><strong>Best Practices:</strong></p>
+            <ul class="text-gray-600 text-sm space-y-1 ml-4">
+              <li>• Door should open inward</li>
+              <li>• Avoid facing south or southwest</li>
+              <li>• Keep entrance clean and well-lit</li>
+              <li>• Avoid placing shoes near entrance</li>
+              <li>• Use auspicious symbols like Om or Swastika</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Master Bedroom</h3>
+          <div class="space-y-3">
+            <p class="text-gray-700"><strong>Ideal Direction:</strong> Southwest or South</p>
+            <p class="text-gray-700"><strong>Best Practices:</strong></p>
+            <ul class="text-gray-600 text-sm space-y-1 ml-4">
+              <li>• Head should face south or east while sleeping</li>
+              <li>• Avoid sleeping with head towards north</li>
+              <li>• Keep bedroom in southwest corner</li>
+              <li>• Use calming colors like blue or green</li>
+              <li>• Avoid mirrors facing the bed</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Kitchen</h3>
+          <div class="space-y-3">
+            <p class="text-gray-700"><strong>Ideal Direction:</strong> Southeast or Northwest</p>
+            <p class="text-gray-700"><strong>Best Practices:</strong></p>
+            <ul class="text-gray-600 text-sm space-y-1 ml-4">
+              <li>• Cooking should face east</li>
+              <li>• Keep gas stove in southeast</li>
+              <li>• Water sources in northeast</li>
+              <li>• Avoid kitchen in northeast</li>
+              <li>• Use fire element colors (red, orange)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Living Room</h3>
+          <div class="space-y-3">
+            <p class="text-gray-700"><strong>Ideal Direction:</strong> North or East</p>
+            <p class="text-gray-700"><strong>Best Practices:</strong></p>
+            <ul class="text-gray-600 text-sm space-y-1 ml-4">
+              <li>• Place seating facing north or east</li>
+              <li>• Keep center open (Brahmasthan)</li>
+              <li>• Use warm, welcoming colors</li>
+              <li>• Avoid heavy furniture in center</li>
+              <li>• Ensure good ventilation</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Prayer Room</h3>
+          <div class="space-y-3">
+            <p class="text-gray-700"><strong>Ideal Direction:</strong> Northeast or East</p>
+            <p class="text-gray-700"><strong>Best Practices:</strong></p>
+            <ul class="text-gray-600 text-sm space-y-1 ml-4">
+              <li>• Face east or north while praying</li>
+              <li>• Keep idols in northeast</li>
+              <li>• Use white, yellow, or orange colors</li>
+              <li>• Keep room clean and peaceful</li>
+              <li>• Avoid placing under staircase</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Study Room</h3>
+          <div class="space-y-3">
+            <p class="text-gray-700"><strong>Ideal Direction:</strong> North or East</p>
+            <p class="text-gray-700"><strong>Best Practices:</strong></p>
+            <ul class="text-gray-600 text-sm space-y-1 ml-4">
+              <li>• Study table should face east or north</li>
+              <li>• Keep books in southwest</li>
+              <li>• Use green or blue colors</li>
+              <li>• Ensure good lighting</li>
+              <li>• Avoid study room in southwest</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Remedies Section -->
+  <section id="remedies" class="py-16 bg-white px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Common Vastu Remedies</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-orange-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Missing Corners</h3>
+          <p class="text-gray-700 mb-4">If your plot or house has missing corners, it can cause various problems.</p>
+          <h4 class="font-semibold text-gray-800 mb-2">Remedies:</h4>
+          <ul class="text-gray-600 text-sm space-y-1">
+            <li>• Plant trees in missing corners</li>
+            <li>• Use mirrors to extend the space</li>
+            <li>• Place heavy objects in missing areas</li>
+            <li>• Use crystal pyramids</li>
+          </ul>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Toilet in Northeast</h3>
+          <p class="text-gray-700 mb-4">Toilet in northeast can cause financial and health problems.</p>
+          <h4 class="font-semibold text-gray-800 mb-2">Remedies:</h4>
+          <ul class="text-gray-600 text-sm space-y-1">
+            <li>• Keep toilet seat closed</li>
+            <li>• Use blue or black tiles</li>
+            <li>• Place salt in corners</li>
+            <li>• Install exhaust fan</li>
+          </ul>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Kitchen in Northeast</h3>
+          <p class="text-gray-700 mb-4">Kitchen in northeast can cause health and financial issues.</p>
+          <h4 class="font-semibold text-gray-800 mb-2">Remedies:</h4>
+          <ul class="text-gray-600 text-sm space-y-1">
+            <li>• Use yellow or orange colors</li>
+            <li>• Place crystal salt lamp</li>
+            <li>• Keep water in northeast corner</li>
+            <li>• Use copper vessels</li>
+          </ul>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Staircase in Center</h3>
+          <p class="text-gray-700 mb-4">Staircase in center (Brahmasthan) can cause instability.</p>
+          <h4 class="font-semibold text-gray-800 mb-2">Remedies:</h4>
+          <ul class="text-gray-600 text-sm space-y-1">
+            <li>• Use wooden staircase</li>
+            <li>• Place crystal in center</li>
+            <li>• Use wind chimes</li>
+            <li>• Keep center area clean</li>
+          </ul>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Bedroom in Northeast</h3>
+          <p class="text-gray-700 mb-4">Bedroom in northeast can cause health and relationship issues.</p>
+          <h4 class="font-semibold text-gray-800 mb-2">Remedies:</h4>
+          <ul class="text-gray-600 text-sm space-y-1">
+            <li>• Use white or light blue colors</li>
+            <li>• Place water fountain</li>
+            <li>• Use crystal salt lamp</li>
+            <li>• Keep room well-ventilated</li>
+          </ul>
+        </div>
+        
+        <div class="bg-orange-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Main Door Problems</h3>
+          <p class="text-gray-700 mb-4">Wrong door direction can cause various life problems.</p>
+          <h4 class="font-semibold text-gray-800 mb-2">Remedies:</h4>
+          <ul class="text-gray-600 text-sm space-y-1">
+            <li>• Use auspicious symbols</li>
+            <li>• Place wind chimes</li>
+            <li>• Use proper door colors</li>
+            <li>• Keep entrance clean</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Colors Section -->
+  <section id="colors" class="py-16 bg-orange-50 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Color Psychology in Vastu</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg">
+          <div class="w-16 h-16 bg-red-500 rounded-full mx-auto mb-4"></div>
+          <h3 class="text-lg font-bold text-orange-700 mb-2">Red</h3>
+          <p class="text-sm text-gray-600 mb-2">Element: Fire</p>
+          <p class="text-xs text-gray-600">Use in: Kitchen, dining room</p>
+          <p class="text-xs text-gray-600">Benefits: Energy, passion, courage</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg">
+          <div class="w-16 h-16 bg-blue-500 rounded-full mx-auto mb-4"></div>
+          <h3 class="text-lg font-bold text-orange-700 mb-2">Blue</h3>
+          <p class="text-sm text-gray-600 mb-2">Element: Water</p>
+          <p class="text-xs text-gray-600">Use in: Bedroom, bathroom</p>
+          <p class="text-xs text-gray-600">Benefits: Peace, calm, wisdom</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg">
+          <div class="w-16 h-16 bg-green-500 rounded-full mx-auto mb-4"></div>
+          <h3 class="text-lg font-bold text-orange-700 mb-2">Green</h3>
+          <p class="text-sm text-gray-600 mb-2">Element: Earth</p>
+          <p class="text-xs text-gray-600">Use in: Living room, study</p>
+          <p class="text-xs text-gray-600">Benefits: Growth, harmony, health</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg">
+          <div class="w-16 h-16 bg-yellow-400 rounded-full mx-auto mb-4"></div>
+          <h3 class="text-lg font-bold text-orange-700 mb-2">Yellow</h3>
+          <p class="text-sm text-gray-600 mb-2">Element: Earth</p>
+          <p class="text-xs text-gray-600">Use in: Prayer room, study</p>
+          <p class="text-xs text-gray-600">Benefits: Knowledge, wisdom, success</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg">
+          <div class="w-16 h-16 bg-purple-500 rounded-full mx-auto mb-4"></div>
+          <h3 class="text-lg font-bold text-orange-700 mb-2">Purple</h3>
+          <p class="text-sm text-gray-600 mb-2">Element: Space</p>
+          <p class="text-xs text-gray-600">Use in: Meditation room</p>
+          <p class="text-xs text-gray-600">Benefits: Spirituality, luxury</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg">
+          <div class="w-16 h-16 bg-orange-500 rounded-full mx-auto mb-4"></div>
+          <h3 class="text-lg font-bold text-orange-700 mb-2">Orange</h3>
+          <p class="text-sm text-gray-600 mb-2">Element: Fire</p>
+          <p class="text-xs text-gray-600">Use in: Kitchen, dining</p>
+          <p class="text-xs text-gray-600">Benefits: Creativity, enthusiasm</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg">
+          <div class="w-16 h-16 bg-pink-400 rounded-full mx-auto mb-4"></div>
+          <h3 class="text-lg font-bold text-orange-700 mb-2">Pink</h3>
+          <p class="text-sm text-gray-600 mb-2">Element: Water</p>
+          <p class="text-xs text-gray-600">Use in: Bedroom, children's room</p>
+          <p class="text-xs text-gray-600">Benefits: Love, romance, harmony</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg">
+          <div class="w-16 h-16 bg-gray-500 rounded-full mx-auto mb-4"></div>
+          <h3 class="text-lg font-bold text-orange-700 mb-2">Gray</h3>
+          <p class="text-sm text-gray-600 mb-2">Element: Earth</p>
+          <p class="text-xs text-gray-600">Use in: Office, study</p>
+          <p class="text-xs text-gray-600">Benefits: Stability, balance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Materials Section -->
+  <section id="materials" class="py-16 bg-white px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Natural Materials in Vastu</h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-bold text-orange-700 mb-6">Recommended Materials</h3>
+          <div class="space-y-6">
+            <div class="bg-orange-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-gray-800 mb-2">Wood</h4>
+              <p class="text-gray-600 text-sm mb-2">Element: Earth</p>
+              <p class="text-gray-600 text-sm">Use for: Furniture, doors, flooring</p>
+              <p class="text-gray-600 text-sm">Benefits: Warmth, stability, natural energy</p>
+            </div>
+            
+            <div class="bg-orange-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-gray-800 mb-2">Stone</h4>
+              <p class="text-gray-600 text-sm mb-2">Element: Earth</p>
+              <p class="text-gray-600 text-sm">Use for: Flooring, walls, countertops</p>
+              <p class="text-gray-600 text-sm">Benefits: Durability, grounding energy</p>
+            </div>
+            
+            <div class="bg-orange-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-gray-800 mb-2">Clay</h4>
+              <p class="text-gray-600 text-sm mb-2">Element: Earth</p>
+              <p class="text-gray-600 text-sm">Use for: Pots, tiles, bricks</p>
+              <p class="text-gray-600 text-sm">Benefits: Natural cooling, eco-friendly</p>
+            </div>
+            
+            <div class="bg-orange-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-gray-800 mb-2">Copper</h4>
+              <p class="text-gray-600 text-sm mb-2">Element: Fire</p>
+              <p class="text-gray-600 text-sm">Use for: Vessels, utensils, decor</p>
+              <p class="text-gray-600 text-sm">Benefits: Purification, positive energy</p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-bold text-orange-700 mb-6">Materials to Avoid</h3>
+          <div class="space-y-6">
+            <div class="bg-red-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-gray-800 mb-2">Plastic</h4>
+              <p class="text-gray-600 text-sm mb-2">Reason: Artificial, blocks natural energy</p>
+              <p class="text-gray-600 text-sm">Alternative: Use natural materials</p>
+            </div>
+            
+            <div class="bg-red-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-gray-800 mb-2">Synthetic Fabrics</h4>
+              <p class="text-gray-600 text-sm mb-2">Reason: Poor energy conductivity</p>
+              <p class="text-gray-600 text-sm">Alternative: Use cotton, silk, wool</p>
+            </div>
+            
+            <div class="bg-red-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-gray-800 mb-2">Aluminum</h4>
+              <p class="text-gray-600 text-sm mb-2">Reason: Can cause health issues</p>
+              <p class="text-gray-600 text-sm">Alternative: Use copper, brass, steel</p>
+            </div>
+            
+            <div class="bg-red-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-gray-800 mb-2">Mirrored Surfaces</h4>
+              <p class="text-gray-600 text-sm mb-2">Reason: Can reflect negative energy</p>
+              <p class="text-gray-600 text-sm">Alternative: Use strategically placed mirrors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-16 section-bg text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold text-orange-900 mb-4">Ready to Apply Vastu Principles?</h2>
+      <p class="text-xl text-gray-800 mb-8">Get expert guidance to implement these principles in your space for maximum benefits.</p>
+      <a href="contact.html" class="bg-orange-700 text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-orange-800 transition">Book Consultation</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#f8f5f0] border-t border-orange-200 py-8 text-center text-brown-900">
+    <img src="Vastu Lotus.jpg" alt="Vastu Lotus Divider" class="mx-auto mb-4 w-10 opacity-60 rounded-full" />
+    <div class="mb-2">
+              <a href="index.html" class="font-bold text-orange-700 text-xl">VASTU DESIGNER</a>
+    </div>
+          <div class="text-sm text-gray-600 mb-2">&copy; 2024 Vastu Designer. All rights reserved.</div>
+    <div class="flex justify-center space-x-6 text-sm">
+      <a href="privacy.html" class="hover:text-orange-700">Privacy Policy</a>
+      <a href="terms.html" class="hover:text-orange-700">Terms of Service</a>
+    </div>
+  </footer>
+</body>
+</html>

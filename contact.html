@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vastu Designer | Book Your Consultation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--color-background-light);
+            color: var(--color-text-dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+        .hero-content h1 {
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+        :root {
+            --color-primary: #26A69A;
+            --color-accent: #FFC107;
+            --color-secondary: #37474F;
+            --color-background-light: #F8F8F8;
+            --color-text-dark: #333333;
+            --color-text-muted: #616161;
+        }
+        .text-primary { color: var(--color-primary); }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-accent { color: var(--color-accent); }
+        .bg-accent { background-color: var(--color-accent); }
+        .text-secondary { color: var(--color-secondary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .bg-background-light { background-color: var(--color-background-light); }
+        .text-text-dark { color: var(--color-text-dark); }
+        .text-text-muted { color: var(--color-text-muted); }
+        .hero-section-container {
+            position: relative;
+            overflow: hidden;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 0;
+            background-image: url('https://placehold.co/1920x500/26A69A/FFFFFF?text=Consultation+Booking+Background');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #vastu3DCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-content-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(248, 248, 248, 0.5) 0%, rgba(248, 248, 248, 0.5) 100%);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            border-radius: 1rem;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--color-accent);
+        }
+        .btn-primary {
+            background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+            box-shadow: 0 8px 15px rgba(38, 166, 154, 0.3);
+            transition: all 0.3s ease-in-out;
+            border-radius: 9999px;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, var(--color-accent), var(--color-primary));
+            box-shadow: 0 12px 20px rgba(38, 166, 154, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            border: 2px solid var(--color-secondary);
+            background-color: transparent;
+            color: var(--color-secondary);
+            transition: all 0.3s ease-in-out;
+            border-radius: 9999px;
+        }
+        .btn-secondary:hover {
+            background-color: var(--color-secondary);
+            color: white;
+            box-shadow: 0 8px 15px rgba(55, 71, 79, 0.2);
+            transform: translateY(-2px);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animate-fade-in {
+            opacity: 0;
+            transition: opacity 1.2s ease-in;
+        }
+        .animate-fade-in.is-visible {
+            opacity: 1;
+        }
+        header {
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+        }
+        @media (max-width: 767px) {
+            .header-nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            #mobile-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                margin-top: 0.25rem;
+                background-color: white;
+                border-top: 1px solid #eee;
+                padding-top: 0.25rem;
+            }
+            #mobile-menu.is-open {
+                display: flex;
+            }
+            #mobile-menu a {
+                padding: 0.4rem 1rem;
+                border-bottom: 1px solid #f5f5f5;
+                width: 100%;
+            }
+            #mobile-menu a:last-child {
+                border-bottom: none;
+            }
+            .hamburger-button {
+                display: block;
+            }
+            .vastu-designer-title {
+                font-size: 1.5rem;
+                letter-spacing: 0.04em;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.125rem;
+            }
+            .contact-info-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .contact-info-item .icon-wrapper {
+                margin-bottom: 0.5rem;
+            }
+        }
+        @media (min-width: 768px) {
+            #mobile-menu {
+                display: flex !important;
+                flex-direction: row;
+                justify-content: flex-end;
+                margin-top: 0;
+                background-color: transparent;
+                border-top: none;
+                padding-top: 0;
+            }
+            .hamburger-button {
+                display: none;
+            }
+        }
+        .vastu-designer-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+            text-shadow: 0 2px 4px rgba(38, 166, 154, 0.3);
+            transition: all 0.4s ease-in-out;
+            position: relative;
+        }
+        .vastu-designer-title::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-primary));
+            border-radius: 8px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .vastu-designer-title:hover::before {
+            opacity: 0.1;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            background-color: white;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(38, 166, 154, 0.2);
+        }
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body class="text-text-dark">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-lg py-0.5 px-6 md:px-8 lg:px-12 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between header-nav-container">
+            <!-- Logo and Site Title -->
+            <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+                <a href="index.html" class="text-xl md:text-3xl font-extrabold text-primary tracking-wide vastu-designer-title">VASTU DESIGNER</a>
+                <!-- Hamburger Menu Button for Mobile -->
+                <button id="hamburger-button" class="hamburger-button md:hidden text-text-dark text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <!-- Navigation Links -->
+            <nav id="mobile-menu" class="flex flex-wrap justify-center md:justify-end gap-x-4 lg:gap-x-8 gap-y-2 text-lg font-medium">
+                <a href="index.html#home" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Home</a>
+                <a href="index.html#about" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">About Us</a>
+                <a href="index.html#consultation-methods" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Consultation Methods</a>
+                <a href="index.html#services" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Our Services</a>
+                <a href="index.html#testimonials" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Success Stories</a>
+                <a href="contact.html" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section id="contact-hero" class="hero-section-container">
+        <!-- 3D Canvas for live background designs -->
+        <canvas id="vastu3DCanvas"></canvas>
+        <!-- Overlay for content readability over the background image -->
+        <div class="hero-content-overlay"></div>
+        <!-- Main content (text) -->
+        <div class="max-w-4xl mx-auto px-4 hero-content">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-4 drop-shadow-lg animate-fade-in">
+                Book Your Vastu Consultation
+            </h1>
+            <p class="text-lg md:text-xl text-text-dark max-w-2xl mx-auto font-medium animate-fade-in" style="transition-delay: 0.2s;">
+                Fill out the form below to schedule your personalized Vastu consultation.
+            </p>
+        </div>
+    </section>
+
+    <!-- Direct Booking Form Section -->
+    <section id="booking-form-section" class="py-12 md:py-16 bg-background-light animate-on-scroll">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-primary text-center mb-8">Schedule Your Consultation</h2>
+            <p class="text-center text-text-muted text-lg mb-8">
+                Please provide your details and preferred consultation method and time. We will contact you shortly to confirm your booking.
+            </p>
+            <form action="#" method="POST" class="space-y-6 bg-white p-8 rounded-xl shadow-lg">
+                <div>
+                    <label for="name" class="block text-lg font-medium text-text-dark mb-2">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Full Name" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-lg font-medium text-text-dark mb-2">Your Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                </div>
+                <div>
+                    <label for="phone" class="block text-lg font-medium text-text-dark mb-2">Your Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g., +1234567890" required>
+                </div>
+                <div>
+                    <label for="property-type" class="block text-lg font-medium text-text-dark mb-2">Type of Property</label>
+                    <select id="property-type" name="propertyType" class="form-select" required>
+                        <option value="">-- Select property type --</option>
+                        <option value="Residential - Apartment">Residential - Apartment</option>
+                        <option value="Residential - Independent House">Residential - Independent House</option>
+                        <option value="Commercial - Office Space">Commercial - Office Space</option>
+                        <option value="Commercial - Retail Store">Commercial - Retail Store</option>
+                        <option value="Industrial Unit">Industrial Unit</option>
+                        <option value="Plot / Land">Plot / Land</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="consultation-type" class="block text-lg font-medium text-text-dark mb-2">Preferred Consultation Method</label>
+                    <select id="consultation-type" name="consultationType" class="form-select" required>
+                        <option value="">-- Select a method --</option>
+                        <option value="Phone Call">Phone Call</option>
+                        <option value="Video Call">Video Call</option>
+                        <option value="On-Site Visit">On-Site Visit</option>
+                        <option value="Office Visit">Office Visit</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="preferred-date" class="block text-lg font-medium text-text-dark mb-2">Preferred Date</label>
+                        <input type="date" id="preferred-date" name="preferredDate" class="form-input" required>
+                    </div>
+                    <div>
+                        <label for="preferred-time" class="block text-lg font-medium text-text-dark mb-2">Preferred Time</label>
+                        <input type="time" id="preferred-time" name="preferredTime" class="form-input" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block text-lg font-medium text-text-dark mb-2">Your Message / Specific Needs</label>
+                    <textarea id="message" name="message" class="form-input form-textarea" placeholder="Tell us more about your Vastu needs or any specific details." rows="4"></textarea>
+                </div>
+                <div class="text-center pt-4">
+                    <button type="submit" class="btn-primary text-white px-10 py-3 rounded-full font-bold text-lg shadow-xl">
+                        Submit Booking Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Get in Touch with Us Section -->
+    <section id="contact-details" class="py-12 md:py-16 bg-white animate-on-scroll">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-12">Get in Touch with Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Address Card -->
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center card-hover-effect border-b-4 border-primary">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center shadow-sm mb-5">
+                        <i class="fas fa-map-marker-alt text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Our Office</h3>
+                    <p class="text-text-dark text-center">
+                        Vastu Designer Headquarters<br>
+                        123 Harmony Lane, Vastu City<br>
+                        State, Zip Code 12345, Country
+                    </p>
+                </div>
+                <!-- Phone Card -->
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center card-hover-effect border-b-4 border-accent">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center shadow-sm mb-5">
+                        <i class="fas fa-phone-alt text-3xl text-accent"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Call Us</h3>
+                    <p class="text-text-dark text-center">
+                        General Inquiries: <a href="tel:+1234567890" class="text-primary hover:underline">+1 (234) 567-890</a><br>
+                        Consultations: <a href="tel:+1987654321" class="text-primary hover:underline">+1 (987) 654-321</a>
+                    </p>
+                </div>
+                <!-- Email Card -->
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center card-hover-effect border-b-4 border-primary">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center shadow-sm mb-5">
+                        <i class="fas fa-envelope text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Email Us</h3>
+                    <p class="text-text-dark text-center">
+                        General: <a href="mailto:info@vastudesigner.com" class="text-primary hover:underline">info@vastudesigner.com</a><br>
+                        Support: <a href="mailto:support@vastudesigner.com" class="text-primary hover:underline">support@vastudesigner.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="contact-map" class="py-12 md:py-16 bg-background-light animate-on-scroll">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-8">Find Our Office</h2>
+            <div class="relative overflow-hidden rounded-xl shadow-lg border-4 border-gray-200" style="padding-top: 56.25%;"> <!-- 16:9 Aspect Ratio -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.66613303649!2d78.4560799!3d17.4267499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcba860f0d2c94d%3A0x6b4c1e4f4b2f1c8a!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1678901234567!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="absolute top-0 left-0 w-full h-full"
+                    title="Our Location on Google Maps"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-secondary text-white py-8 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <img src="https://placehold.co/40x40/26A69A/FFFFFF?text=VD" alt="Vastu Designer Logo" class="w-10 h-10 mx-auto mb-4 opacity-80 rounded-full" />
+            <div class="mb-2">
+                <a href="index.html" class="font-bold text-accent text-xl tracking-wide">VASTU DESIGNER</a>
+            </div>
+            <p class="text-xs text-gray-300 mb-3">&copy; 2024 Vastu Designer. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 text-sm font-medium">
+                <a href="privacy.html" class="hover:text-accent transition duration-200">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-accent transition duration-200">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Three.js Scene Setup for Hero Section
+        window.onload = function() {
+            const canvas = document.getElementById('vastu3DCanvas');
+            if (!canvas) {
+                console.error("3D Canvas element not found!");
+                return;
+            }
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 40);
+            camera.lookAt(scene.position);
+
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3);
+            directionalLight.position.set(5, 10, 7);
+            scene.add(directionalLight);
+
+            function createSubtleMesh(geometry, color, opacity, scale, position, rotationSpeed) {
+                const material = new THREE.MeshBasicMaterial({
+                    color: color,
+                    wireframe: true,
+                    transparent: true,
+                    opacity: opacity,
+                    side: THREE.DoubleSide
+                });
+                const mesh = new THREE.Mesh(geometry, material);
+                mesh.scale.set(scale.x, scale.y, scale.z);
+                mesh.position.set(position.x, position.y, position.z);
+                mesh.rotationSpeed = rotationSpeed;
+                scene.add(mesh);
+                return mesh;
+            }
+
+            const backgroundShapes = [];
+            for (let i = 0; i < 20; i++) {
+                backgroundShapes.push(createSubtleMesh(
+                    new THREE.SphereGeometry(Math.random() * 0.4 + 0.1, 8, 8),
+                    0x81C784,
+                    0.02,
+                    { x: 1, y: 1, z: 1 },
+                    { x: (Math.random() - 0.5) * 80, y: (Math.random() - 0.5) * 60, z: (Math.random() - 0.5) * 100 - 50 },
+                    { x: (Math.random() - 0.5) * 0.0003, y: (Math.random() - 0.5) * 0.0003, z: (Math.random() - 0.5) * 0.0003 }
+                ));
+            }
+
+            const lineMaterial = new THREE.LineBasicMaterial({ color: 0x90A4AE, transparent: true, opacity: 0.015 });
+            const points = [];
+            const numPoints = 25;
+            for (let i = 0; i < numPoints; i++) {
+                points.push(new THREE.Vector3(
+                    (Math.random() - 0.5) * 70,
+                    (Math.random() - 0.5) * 50,
+                    (Math.random() - 0.5) * 90 - 40
+                ));
+            }
+            for (let i = 0; i < numPoints; i++) {
+                for (let j = i + 1; j < numPoints; j++) {
+                    if (points[i].distanceTo(points[j]) < 20) {
+                        const lineGeometry = new THREE.BufferGeometry().setFromPoints([points[i], points[j]]);
+                        const line = new THREE.Line(lineGeometry, lineMaterial);
+                        scene.add(line);
+                    }
+                }
+            }
+
+            backgroundShapes.push(createSubtleMesh(
+                new THREE.PlaneGeometry(120, 120),
+                0xFFD700,
+                0.008,
+                { x: 1, y: 1, z: 1 },
+                { x: 0, y: 0, z: -120 },
+                { x: 0.00005, y: 0.00005, z: 0 }
+            ));
+            backgroundShapes.push(createSubtleMesh(
+                new THREE.PlaneGeometry(100, 100),
+                0x80CBC4,
+                0.01,
+                { x: 1, y: 1, z: 1 },
+                { x: 0, y: 0, z: -100 },
+                { x: -0.00003, y: 0.00008, z: 0 }
+            ));
+
+            const animate = function () {
+                requestAnimationFrame(animate);
+                backgroundShapes.forEach(shape => {
+                    shape.rotation.x += shape.rotationSpeed.x;
+                    shape.rotation.y += shape.rotationSpeed.y;
+                    shape.rotation.z += shape.rotationSpeed.z;
+                });
+                renderer.render(scene, camera);
+            };
+
+            window.addEventListener('resize', () => {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(width, height);
+            });
+
+            animate();
+        };
+
+        // Scroll-triggered Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll, .animate-fade-in').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Mobile Navigation Toggle
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (hamburgerButton && mobileMenu) {
+                hamburgerButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('is-open');
+                    const icon = hamburgerButton.querySelector('i');
+                    if (mobileMenu.classList.contains('is-open')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('is-open');
+                        hamburgerButton.querySelector('i').classList.remove('fa-times');
+                        hamburgerButton.querySelector('i').classList.add('fa-bars');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

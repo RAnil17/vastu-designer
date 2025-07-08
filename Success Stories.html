@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Success Stories | Vastu Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--color-background-light);
+      color: var(--color-text-dark);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    :root {
+      --color-primary: #26A69A;
+      --color-accent: #FFC107;
+      --color-secondary: #37474F;
+      --color-background-light: #F8F8F8;
+      --color-text-dark: #333333;
+      --color-text-muted: #616161;
+    }
+    .text-primary { color: var(--color-primary); }
+    .bg-primary { background-color: var(--color-primary); }
+    .text-accent { color: var(--color-accent); }
+    .bg-accent { background-color: var(--color-accent); }
+    .text-secondary { color: var(--color-secondary); }
+    .bg-secondary { background-color: var(--color-secondary); }
+    .bg-background-light { background-color: var(--color-background-light); }
+    .text-text-dark { color: var(--color-text-dark); }
+    .text-text-muted { color: var(--color-text-muted); }
+    .success-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-image: url('images/temple.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    .success-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(248, 248, 248, 0.7) 0%, rgba(248, 248, 248, 0.7) 100%);
+      z-index: 1;
+    }
+    .success-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 4rem 1rem;
+    }
+  </style>
+</head>
+<body class="text-text-dark">
+  <header class="bg-white shadow-lg py-0.5 px-6 md:px-8 lg:px-12 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between header-nav-container">
+      <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+        <a href="index.html" class="text-xl md:text-3xl font-extrabold text-primary tracking-wide vastu-designer-title">VASTU DESIGNER</a>
+        <button id="hamburger-button" class="hamburger-button md:hidden text-text-dark text-2xl focus:outline-none">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <nav id="mobile-menu" class="flex flex-wrap justify-center md:justify-end gap-x-4 lg:gap-x-8 gap-y-2 text-lg font-medium">
+        <a href="index.html#home" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Home</a>
+        <a href="index.html#about" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">About Us</a>
+        <a href="index.html#consultation-methods" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Consultation Methods</a>
+        <a href="index.html#services" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Our Services</a>
+        <a href="index.html#testimonials" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Success Stories</a>
+        <a href="contact.html" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+  <section class="success-hero">
+    <div class="success-hero-overlay"></div>
+    <div class="success-hero-content">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-primary mb-6">Success Stories</h1>
+      <p class="text-xl md:text-2xl text-text-dark mb-8">Real Transformations Through Vastu</p>
+      <img src="Vastu Lotus.jpg" alt="Vastu Lotus Divider" class="mx-auto w-16 opacity-70 rounded-full" />
+    </div>
+  </section>
+  <section class="py-16 md:py-24 bg-background-light animate-on-scroll">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-12">Client Transformations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center card-hover-effect border-b-4 border-primary">
+          <span class="text-5xl mb-4" role="img" aria-label="Happy Family">🏡</span>
+          <h3 class="text-2xl font-bold text-secondary mb-2">Home Harmony</h3>
+          <blockquote class="italic text-text-dark mb-4">"The Vastu consultation transformed our home into a haven of peace and prosperity. We've experienced remarkable positive changes since implementing the recommendations. Truly life-changing advice!"</blockquote>
+          <p class="text-lg font-semibold text-primary">- Priya Sharma, Homeowner</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center card-hover-effect border-b-4 border-accent">
+          <span class="text-5xl mb-4" role="img" aria-label="Office">🏢</span>
+          <h3 class="text-2xl font-bold text-secondary mb-2">Business Growth</h3>
+          <blockquote class="italic text-text-dark mb-4">"Our office Vastu consultation led to a noticeable boost in team morale and productivity. The energy in our workspace feels so much more positive!"</blockquote>
+          <p class="text-lg font-semibold text-primary">- Rajesh Verma, Entrepreneur</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center card-hover-effect border-b-4 border-primary">
+          <span class="text-5xl mb-4" role="img" aria-label="Plot">��</span>
+          <h3 class="text-2xl font-bold text-secondary mb-2">New Beginnings</h3>
+          <blockquote class="italic text-text-dark mb-4">"With Vastu guidance, our new plot selection and construction went smoothly. We feel confident and blessed in our new home!"</blockquote>
+          <p class="text-lg font-semibold text-primary">- Meena & Suresh, New Homeowners</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-secondary text-white py-10 text-center">
+    <div class="max-w-7xl mx-auto px-4">
+      <img src="https://placehold.co/40x40/26A69A/FFFFFF?text=VD" alt="Vastu Designer Logo" class="w-10 h-10 mx-auto mb-6 opacity-80 rounded-full" />
+      <div class="mb-3">
+        <a href="index.html" class="font-bold text-accent text-2xl tracking-wide">VASTU DESIGNER</a>
+      </div>
+      <p class="text-sm text-gray-300 mb-4">&copy; 2024 Vastu Designer. All rights reserved.</p>
+      <div class="flex justify-center space-x-8 text-sm font-medium">
+        <a href="privacy.html" class="hover:text-accent transition duration-200">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-accent transition duration-200">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Add any scroll or animation scripts if needed, similar to inndex2.html
+  </script>
+</body>
+</html>

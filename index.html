@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vastu Designer | Live Harmony Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--color-background-light);
+            color: var(--color-text-dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+        .hero-content h1 {
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+        :root {
+            --color-primary: #26A69A;
+            --color-accent: #FFC107;
+            --color-secondary: #37474F;
+            --color-background-light: #F8F8F8;
+            --color-text-dark: #333333;
+            --color-text-muted: #616161;
+        }
+        .text-primary { color: var(--color-primary); }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-accent { color: var(--color-accent); }
+        .bg-accent { background-color: var(--color-accent); }
+        .text-secondary { color: var(--color-secondary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .bg-background-light { background-color: var(--color-background-light); }
+        .text-text-dark { color: var(--color-text-dark); }
+        .text-text-muted { color: var(--color-text-muted); }
+        .hero-section-container {
+            position: relative;
+            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 0;
+            background-image: url('images/temple.png'), url('LAYOUT.png');
+            background-size: cover, 60vh;
+            background-position: center, center;
+            background-repeat: no-repeat, no-repeat;
+        }
+        #vastu3DCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-static-image-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://blog.shilaavinyaas.com/uploads/news-image/88/2.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            filter: grayscale(50%) brightness(1.2);
+            z-index: 1;
+        }
+        .hero-content-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(248, 248, 248, 0.5) 0%, rgba(248, 248, 248, 0.5) 100%);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            border-radius: 1rem;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border-color: var(--color-accent);
+        }
+        .btn-primary {
+            background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+            box-shadow: 0 8px 15px rgba(38, 166, 154, 0.3);
+            transition: all 0.3s ease-in-out;
+            border-radius: 9999px;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, var(--color-accent), var(--color-primary));
+            box-shadow: 0 12px 20px rgba(38, 166, 154, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            border: 2px solid var(--color-secondary);
+            background-color: transparent;
+            color: var(--color-secondary);
+            transition: all 0.3s ease-in-out;
+            border-radius: 9999px;
+        }
+        .btn-secondary:hover {
+            background-color: var(--color-secondary);
+            color: white;
+            box-shadow: 0 8px 15px rgba(55, 71, 79, 0.2);
+            transform: translateY(-2px);
+        }
+        .consultation-card {
+            background: linear-gradient(to bottom right, #ffffff, var(--color-background-light));
+            border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .consultation-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(45deg);
+            transition: opacity 0.5s ease-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .consultation-card:hover::before {
+            opacity: 1;
+        }
+        .consultation-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 28px 55px rgba(0, 0, 0, 0.25);
+            border-color: var(--color-primary);
+        }
+        .consultation-card-icon-wrapper {
+            background: linear-gradient(to bottom right, #ffffff, #f5f5f5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #f0f0f0;
+        }
+        .consultation-card-icon-wrapper:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-3px) rotate(2deg);
+        }
+        .consultation-card-link {
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            transition: all 0.3s ease-in-out;
+            font-weight: 600;
+            padding: 0.6rem 1.5rem;
+            border-radius: 9999px;
+        }
+        .consultation-card-link:hover {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(38, 166, 154, 0.2);
+            transform: translateY(-2px);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animate-fade-in {
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+        }
+        .animate-fade-in.is-visible {
+            opacity: 1;
+        }
+        header {
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+        }
+        @media (max-width: 767px) {
+            .header-nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            #mobile-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                margin-top: 0.25rem;
+                background-color: white;
+                border-top: 1px solid #eee;
+                padding-top: 0.25rem;
+            }
+            #mobile-menu.is-open {
+                display: flex;
+            }
+            #mobile-menu a {
+                padding: 0.4rem 1rem;
+                border-bottom: 1px solid #f5f5f5;
+                width: 100%;
+            }
+            #mobile-menu a:last-child {
+                border-bottom: none;
+            }
+            .hamburger-button {
+                display: block;
+            }
+            .vastu-designer-title {
+                font-size: 1.5rem;
+                letter-spacing: 0.04em;
+            }
+        }
+        @media (min-width: 768px) {
+            #mobile-menu {
+                display: flex !important;
+                flex-direction: row;
+                justify-content: flex-end;
+                margin-top: 0;
+                background-color: transparent;
+                border-top: none;
+                padding-top: 0;
+            }
+            .hamburger-button {
+                display: none;
+            }
+        }
+        .vastu-designer-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+            text-shadow: 0 2px 4px rgba(38, 166, 154, 0.3);
+            transition: all 0.4s ease-in-out;
+            position: relative;
+        }
+        .vastu-designer-title::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-primary));
+            border-radius: 8px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .vastu-designer-title:hover {
+            transform: translateY(-2px) scale(1.02);
+            text-shadow: 0 4px 8px rgba(38, 166, 154, 0.5);
+        }
+        .vastu-designer-title:hover::before {
+            opacity: 0.1;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .decent-3d-card {
+            position: relative;
+            background: rgba(255,255,255,0.85);
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 24px 0 rgba(38,166,154,0.10), 0 1.5px 8px rgba(38,166,154,0.08), 0 1.5px 0 #26A69A;
+            border: none;
+            overflow: hidden;
+            padding: 2rem 1.5rem 2rem 2.25rem;
+            transition: box-shadow 0.3s, transform 0.3s;
+            backdrop-filter: blur(6px);
+            min-height: 340px;
+        }
+        .decent-3d-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 7px;
+            background: linear-gradient(180deg, #26A69A 0%, #FFC107 100%);
+            border-radius: 8px 0 0 8px;
+            z-index: 1;
+        }
+        .decent-3d-card:hover {
+            box-shadow: 0 12px 48px 0 rgba(38,166,154,0.18), 0 8px 32px rgba(255,193,7,0.10);
+            transform: translateY(-8px) scale(1.025);
+        }
+        .decent-3d-icon {
+            z-index: 2;
+            margin-bottom: 1.5rem;
+            width: 4.5rem; height: 4.5rem;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fff 60%, #e0f7fa 100%);
+            box-shadow: 0 4px 16px rgba(38,166,154,0.10), 0 1.5px 8px rgba(38,166,154,0.08);
+            border: 3px solid #26A69A;
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+        .decent-3d-card:hover .decent-3d-icon {
+            box-shadow: 0 8px 32px rgba(38,166,154,0.18), 0 2px 8px rgba(255,193,7,0.10);
+            border-color: #FFC107;
+        }
+        @media (max-width: 1024px) {
+            .decent-3d-card { min-height: 320px; }
+        }
+        @media (max-width: 768px) {
+            .decent-3d-card { min-height: 260px; padding: 1.25rem 1rem 1.25rem 1.5rem; }
+        }
+        @media (max-width: 640px) {
+            .decent-3d-card { min-height: unset; padding: 1rem 0.5rem 1rem 1rem; }
+        }
+        .simple-card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(38, 166, 154, 0.07), 0 1px 4px rgba(0,0,0,0.04);
+            border: 1px solid #e5e7eb;
+            transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+            padding: 2rem;
+        }
+        .simple-card:hover {
+            box-shadow: 0 8px 32px rgba(38, 166, 154, 0.13), 0 2px 8px rgba(0,0,0,0.08);
+            border-color: #26A69A;
+            transform: translateY(-4px) scale(1.01);
+        }
+        @media (max-width: 768px) {
+            .simple-card { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body class="text-text-dark">
+
+    <header class="bg-white/90 shadow-md sticky top-0 z-50 transition-all">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 md:py-3">
+            <div class="flex-1 flex items-center">
+                <a href="index.html" class="font-extrabold text-2xl md:text-3xl text-primary tracking-widest vastu-designer-title flex items-center gap-2">
+                    <img src="https://placehold.co/36x36/26A69A/FFFFFF?text=VD" alt="Logo" class="w-9 h-9 rounded-full hidden md:inline-block" />
+                    VASTU DESIGNER
+                </a>
+            </div>
+            <button id="hamburger-button" class="md:hidden text-2xl text-secondary focus:outline-none ml-2">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="mobile-menu" class="hidden md:flex gap-4 lg:gap-8 text-lg font-medium items-center">
+                <li><a href="#home" class="hover:text-primary transition">Home</a></li>
+                <li><a href="#about" class="hover:text-primary transition">About Us</a></li>
+                <li><a href="#consultation-methods" class="hover:text-primary transition">Consultation Methods</a></li>
+                <li><a href="#services" class="hover:text-primary transition">Our Services</a></li>
+                <li><a href="#testimonials" class="hover:text-primary transition">Success Stories</a></li>
+                <li><a href="contact.html" class="hover:text-primary transition">Contact Us</a></li>
+            </ul>
+        </nav>
+        <ul id="mobile-menu-dropdown" class="md:hidden hidden flex-col bg-white shadow-lg absolute w-full left-0 top-full z-40 text-lg font-medium">
+            <li><a href="#home" class="block px-6 py-3 border-b hover:bg-primary/10">Home</a></li>
+            <li><a href="#about" class="block px-6 py-3 border-b hover:bg-primary/10">About Us</a></li>
+            <li><a href="#consultation-methods" class="block px-6 py-3 border-b hover:bg-primary/10">Consultation Methods</a></li>
+            <li><a href="#services" class="block px-6 py-3 border-b hover:bg-primary/10">Our Services</a></li>
+            <li><a href="#testimonials" class="block px-6 py-3 border-b hover:bg-primary/10">Success Stories</a></li>
+            <li><a href="contact.html" class="block px-6 py-3 hover:bg-primary/10">Contact Us</a></li>
+        </ul>
+    </header>
+
+    <section id="home" class="relative flex items-center justify-center min-h-[85vh] text-center bg-[url('images/temple.png')] bg-cover bg-center">
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 drop-shadow-lg">
+                Experience Live Vastu Harmony
+            </h1>
+            <p class="text-xl md:text-2xl lg:text-3xl text-white mb-10 max-w-3xl mx-auto font-medium">
+                Interact with Vastu principles in real-time to balance your space and life.
+            </p>
+            <a href="#consultation-methods" class="inline-block btn-primary text-white px-8 py-3 rounded-full font-semibold shadow-md">
+                Choose Your Consultation Method
+            </a>
+        </div>
+    </section>
+
+    <section id="consultation-methods" class="py-16 md:py-24 bg-background-light animate-on-scroll">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-12">Choose Your Consultation Method</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="simple-card flex flex-col items-center card-hover-effect border-b-0">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center shadow-sm mb-5">
+                        <span class="text-3xl" role="img" aria-label="Video Call Icon">📞</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Video Consultation</h3>
+                    <p class="text-text-dark text-center mb-5">Get expert Vastu guidance from anywhere via live video call. Share floor plans and photos for a personalized review.</p>
+                    <a href="contact.html" class="inline-block px-5 py-2 rounded-full consultation-card-link">Book Video Call &rarr;</a>
+                </div>
+                <div class="simple-card flex flex-col items-center card-hover-effect border-b-0">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center shadow-sm mb-5">
+                        <span class="text-3xl" role="img" aria-label="House Visit Icon">🏡</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">On-Site Consultation</h3>
+                    <p class="text-text-dark text-center mb-5">Our experts visit your home or office for a comprehensive, in-person Vastu analysis and recommendations.</p>
+                    <a href="contact.html" class="inline-block px-5 py-2 rounded-full consultation-card-link">Request Visit &rarr;</a>
+                </div>
+                <div class="simple-card flex flex-col items-center card-hover-effect border-b-0">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center shadow-sm mb-5">
+                        <span class="text-3xl" role="img" aria-label="Office Icon">🏢</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Office Consultation</h3>
+                    <p class="text-text-dark text-center mb-5">Visit our dedicated Vastu office for a focused and detailed one-on-one consultation session.</p>
+                    <a href="contact.html" class="inline-block px-5 py-2 rounded-full consultation-card-link">Schedule Office Visit &rarr;</a>
+                </div>
+                <div class="simple-card flex flex-col items-center card-hover-effect border-b-0">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center shadow-sm mb-5">
+                        <span class="text-3xl" role="img" aria-label="Phone Icon">☎️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Phone Consultation</h3>
+                    <p class="text-text-dark text-center mb-5">Receive quick Vastu insights and advice over a direct phone call, convenient for immediate queries.</p>
+                    <a href="contact.html" class="inline-block px-5 py-2 rounded-full consultation-card-link">Call Now &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-background-light animate-on-scroll" id="benefits">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-12">Benefits of Vastu</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center card-hover-effect border-b-4 border-primary">
+                    <span class="text-5xl mb-4" role="img" aria-label="Health Icon">❤️</span>
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Health</h3>
+                    <p class="text-text-dark text-center">Promote physical and mental well-being.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center card-hover-effect border-b-4 border-accent">
+                    <span class="text-5xl mb-4" role="img" aria-label="Wealth Icon">💰</span>
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Wealth</h3>
+                    <p class="text-text-dark text-center">Attract financial abundance and opportunities.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center card-hover-effect border-b-4 border-primary">
+                    <span class="text-5xl mb-4" role="img" aria-label="Harmony Icon">🧘</span>
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Harmony</h3>
+                    <p class="text-text-dark text-center">Foster peaceful relationships and environment.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center card-hover-effect border-b-4 border-accent">
+                    <span class="text-5xl mb-4" role="img" aria-label="Peace Icon">🕊️</span>
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Peace</h3>
+                    <p class="text-text-dark text-center">Cultivate a calm and tranquil living space.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 bg-white animate-on-scroll">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="https://placehold.co/500x350/26A69A/FFFFFF?text=Vastu+Expert" alt="Vastu Expert" class="rounded-xl shadow-lg border-4 border-gray-200 w-full h-auto object-cover" />
+            </div>
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-6">About Vastu Shastra</h2>
+                <p class="text-lg text-text-dark leading-relaxed mb-6">
+                    Vastu Shastra is an ancient Indian science of architecture and spatial harmony. Our platform brings this timeless wisdom to modern spaces, empowering you with live tools and personalized insights to create environments that support your health, wealth, and happiness.
+                </p>
+                <a href="about.html" class="inline-block btn-primary text-white px-8 py-3 rounded-full font-semibold shadow-md">
+                    Learn More About Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 md:py-24 bg-background-light animate-on-scroll">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-12">Our Services</h2>
+            <p class="text-lg text-text-dark mb-8">Beyond our live tools, we offer comprehensive Vastu consultation services tailored to your specific needs.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center card-hover-effect border-t-4 border-primary">
+                    <img src="https://placehold.co/80x80/26A69A/FFFFFF?text=Home" alt="Residential Vastu" class="w-16 h-16 mx-auto mb-4" />
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Residential Vastu</h3>
+                    <p class="text-text-dark">Optimize your home for peace and prosperity.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-accent">
+                    <img src="https://placehold.co/80x80/FFC107/FFFFFF?text=Office" alt="Commercial Vastu" class="w-16 h-16 mx-auto mb-4" />
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Commercial Vastu</h3>
+                    <p class="text-text-dark">Enhance business growth and workplace harmony.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-primary">
+                    <img src="https://placehold.co/80x80/26A69A/FFFFFF?text=Plot" alt="Plot Selection" class="w-16 h-16 mx-auto mb-4" />
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Plot & New Construction</h3>
+                    <p class="text-text-dark">Auspicious guidance for new beginnings.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-accent">
+                    <img src="https://placehold.co/80x80/FFC107/FFFFFF?text=Renovation" alt="Renovation Vastu" class="w-16 h-16 mx-auto mb-4" />
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Renovation Vastu</h3>
+                    <p class="text-text-dark">Revitalize existing spaces with Vastu corrections.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-primary">
+                    <img src="https://placehold.co/80x80/26A69A/FFFFFF?text=Industrial" alt="Industrial Vastu" class="w-16 h-16 mx-auto mb-4" />
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Industrial Vastu</h3>
+                    <p class="text-text-dark">Harmonize industrial units for productivity.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-accent">
+                    <img src="https://placehold.co/80x80/FFC107/FFFFFF?text=Landscape" alt="Landscape Vastu" class="w-16 h-16 mx-auto mb-4" />
+                    <h3 class="text-2xl font-bold text-secondary mb-2">Landscape Vastu</h3>
+                    <p class="text-text-dark">Create positive energy in outdoor spaces.</p>
+                </div>
+            </div>
+            <a href="services.html" class="inline-block mt-12 btn-primary text-white px-8 py-3 rounded-full font-semibold shadow-md">
+                View All Services
+            </a>
+        </div>
+    </section>
+
+    <section id="consultation" class="py-16 md:py-24 bg-secondary text-white text-center animate-on-scroll">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Ready to Transform Your Space?</h2>
+            <p class="text-xl md:text-2xl mb-10">
+                Book a personalized Vastu consultation today and unlock the full potential of your living or working environment.
+            </p>
+            <a href="contact.html" class="btn-primary text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl">
+                Book Your Consultation
+            </a>
+        </div>
+    </section>
+
+    <section id="knowledge" class="py-16 md:py-24 bg-white animate-on-scroll">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-12">Vastu Knowledge Hub</h2>
+            <p class="text-lg text-text-dark mb-8">Dive deeper into the ancient wisdom of Vastu Shastra with our comprehensive articles and guides.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-background-light rounded-xl shadow-lg p-6 text-left card-hover-effect">
+                    <h3 class="text-2xl font-bold text-secondary mb-3">Understanding Directions</h3>
+                    <p class="text-text-dark mb-4">Learn how each cardinal direction influences energy flow and specific aspects of your life according to Vastu.</p>
+                    <a href="knowledge.html#directions" class="text-primary font-semibold hover:underline">Read More &rarr;</a>
+                </div>
+                <div class="bg-background-light rounded-xl shadow-lg p-6 text-left card-hover-effect">
+                    <h3 class="text-2xl font-bold text-secondary mb-3">Elements & Their Impact</h3>
+                    <p class="text-text-dark mb-4">Explore the role of the five elements (Earth, Water, Fire, Air, Space) in Vastu and their balance.</p>
+                    <a href="knowledge.html#elements" class="text-primary font-semibold hover:underline">Read More &rarr;</a>
+                </div>
+            </div>
+            <a href="knowledge.html" class="inline-block mt-12 btn-primary text-white px-8 py-3 rounded-full font-semibold shadow-md">
+                Explore All Articles
+            </a>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-16 md:py-24 bg-background-light animate-on-scroll">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-12">Success Stories</h2>
+            <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 border-l-8 border-accent relative card-hover-effect">
+                <blockquote class="text-xl md:text-2xl italic text-text-dark leading-relaxed mb-6">
+                    "The Vastu consultation transformed our home into a haven of peace and prosperity. We've experienced remarkable positive changes since implementing the recommendations. Truly life-changing advice!”
+                </blockquote>
+                <p class="text-lg md:text-xl font-semibold text-primary">- Priya Sharma, Homeowner</p>
+                <span class="absolute top-4 left-4 text-gray-200 text-6xl opacity-50 font-serif">“</span>
+                <span class="absolute bottom-4 right-4 text-gray-200 text-6xl opacity-50 font-serif rotate-180">”</span>
+            </div>
+            <a href="Success Stories.html" class="inline-block mt-10 btn-primary text-white px-8 py-3 rounded-full font-semibold shadow-md">
+                Read More Success Stories
+            </a>
+        </div>
+    </section>
+
+    <section id="faq" class="py-16 md:py-24 bg-white animate-on-scroll">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-primary text-center mb-12">Common Questions</h2>
+            <div class="space-y-6">
+                <div class="bg-background-light rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold text-secondary mb-2">What is Vastu Shastra?</h3>
+                    <p class="text-text-dark">Vastu Shastra is an ancient Indian science of architecture that guides the design and construction of buildings to ensure harmony with natural energies.</p>
+                </div>
+                <div class="bg-background-light rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold text-secondary mb-2">How can Vastu help me?</h3>
+                    <p class="text-text-dark">Vastu can help improve various aspects of your life, including health, wealth, relationships, and overall peace, by optimizing the energy flow in your space.</p>
+                </div>
+                <div class="bg-background-light rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold text-secondary mb-2">Is Vastu applicable to modern homes?</h3>
+                    <p class="text-text-dark">Absolutely! Vastu principles can be adapted and applied to any modern home or office, regardless of its age or design, to enhance positive energy.</p>
+                </div>
+            </div>
+            <a href="faq.html" class="inline-block mt-10 btn-secondary text-white px-8 py-3 rounded-full font-semibold shadow-md mx-auto block w-fit">
+                View All FAQs
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 bg-primary text-white text-center animate-on-scroll">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Let's Connect</h2>
+            <p class="text-xl md:text-2xl mb-10">
+                Ready to start your Vastu journey or have questions? Our team is here to help you every step of the way.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="contact.html" class="bg-white text-primary px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                    Contact Our Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-secondary text-white py-10 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <img src="https://placehold.co/40x40/26A69A/FFFFFF?text=VD" alt="Vastu Designer Logo" class="w-10 h-10 mx-auto mb-6 opacity-80 rounded-full" />
+            <div class="mb-3">
+                <a href="index.html" class="font-bold text-accent text-2xl tracking-wide">VASTU DESIGNER</a>
+            </div>
+            <p class="text-sm text-gray-300 mb-4">&copy; 2024 Vastu Designer. All rights reserved.</p>
+            <div class="flex justify-center space-x-8 text-sm font-medium">
+                <a href="privacy.html" class="hover:text-accent transition duration-200">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-accent transition duration-200">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        window.onload = function() {
+            const canvas = document.getElementById('vastu3DCanvas');
+            if (!canvas) {
+                console.error("3D Canvas element not found!");
+                return;
+            }
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 40);
+            camera.lookAt(scene.position);
+
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3);
+            directionalLight.position.set(5, 10, 7);
+            scene.add(directionalLight);
+
+            function createSubtleMesh(geometry, color, opacity, scale, position, rotationSpeed) {
+                const material = new THREE.MeshBasicMaterial({
+                    color: color,
+                    wireframe: true,
+                    transparent: true,
+                    opacity: opacity,
+                    side: THREE.DoubleSide
+                });
+                const mesh = new THREE.Mesh(geometry, material);
+                mesh.scale.set(scale.x, scale.y, scale.z);
+                mesh.position.set(position.x, position.y, position.z);
+                mesh.rotationSpeed = rotationSpeed;
+                scene.add(mesh);
+                return mesh;
+            }
+
+            const backgroundShapes = [];
+
+            for (let i = 0; i < 20; i++) {
+                backgroundShapes.push(createSubtleMesh(
+                    new THREE.SphereGeometry(Math.random() * 0.4 + 0.1, 8, 8),
+                    0x81C784,
+                    0.02,
+                    { x: 1, y: 1, z: 1 },
+                    { x: (Math.random() - 0.5) * 80, y: (Math.random() - 0.5) * 60, z: (Math.random() - 0.5) * 100 - 50 },
+                    { x: (Math.random() - 0.5) * 0.0003, y: (Math.random() - 0.5) * 0.0003, z: (Math.random() - 0.5) * 0.0003 }
+                ));
+            }
+
+            const lineMaterial = new THREE.LineBasicMaterial({ color: 0x90A4AE, transparent: true, opacity: 0.015 });
+            const points = [];
+            const numPoints = 25;
+            for (let i = 0; i < numPoints; i++) {
+                points.push(new THREE.Vector3(
+                    (Math.random() - 0.5) * 70,
+                    (Math.random() - 0.5) * 50,
+                    (Math.random() - 0.5) * 90 - 40
+                ));
+            }
+            for (let i = 0; i < numPoints; i++) {
+                for (let j = i + 1; j < numPoints; j++) {
+                    if (points[i].distanceTo(points[j]) < 20) {
+                        const lineGeometry = new THREE.BufferGeometry().setFromPoints([points[i], points[j]]);
+                        const line = new THREE.Line(lineGeometry, lineMaterial);
+                        scene.add(line);
+                    }
+                }
+            }
+
+            backgroundShapes.push(createSubtleMesh(
+                new THREE.PlaneGeometry(120, 120),
+                0xFFD700,
+                0.008,
+                { x: 1, y: 1, z: 1 },
+                { x: 0, y: 0, z: -120 },
+                { x: 0.00005, y: 0.00005, z: 0 }
+            ));
+            backgroundShapes.push(createSubtleMesh(
+                new THREE.PlaneGeometry(100, 100),
+                0x80CBC4,
+                0.01,
+                { x: 1, y: 1, z: 1 },
+                { x: 0, y: 0, z: -100 },
+                { x: -0.00003, y: 0.00008, z: 0 }
+            ));
+
+
+            const animate = function () {
+                requestAnimationFrame(animate);
+                backgroundShapes.forEach(shape => {
+                    shape.rotation.x += shape.rotationSpeed.x;
+                    shape.rotation.y += shape.rotationSpeed.y;
+                    shape.rotation.z += shape.rotationSpeed.z;
+                });
+                renderer.render(scene, camera);
+            };
+
+            window.addEventListener('resize', () => {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(width, height);
+            });
+
+            animate();
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll, .animate-fade-in').forEach(element => {
+                observer.observe(element);
+            });
+
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (hamburgerButton && mobileMenu) {
+                hamburgerButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('is-open');
+                    const icon = hamburgerButton.querySelector('i');
+                    if (mobileMenu.classList.contains('is-open')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('is-open');
+                        hamburgerButton.querySelector('i').classList.remove('fa-times');
+                        hamburgerButton.querySelector('i').classList.add('fa-bars');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
