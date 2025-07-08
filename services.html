@@ -66,422 +66,138 @@
 </head>
 <body class="text-text-dark">
   <!-- Header Section -->
-  <header class="bg-white shadow-lg py-0.5 px-6 md:px-8 lg:px-12 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between header-nav-container">
-      <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
-        <a href="index.html" class="text-xl md:text-3xl font-extrabold text-primary tracking-wide vastu-designer-title">VASTU DESIGNER</a>
-        <button id="hamburger-button" class="hamburger-button md:hidden text-text-dark text-2xl focus:outline-none">
-          <i class="fas fa-bars"></i>
-        </button>
+  <header class="bg-white/90 shadow-md sticky top-0 z-50 transition-all">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 md:py-3">
+      <div class="flex-1 flex items-center">
+        <a href="index.html" class="font-extrabold text-2xl md:text-3xl text-primary tracking-widest vastu-designer-title flex items-center gap-2">
+          <img src="https://placehold.co/36x36/26A69A/FFFFFF?text=VD" alt="Logo" class="w-9 h-9 rounded-full hidden md:inline-block" />
+          VASTU DESIGNER
+        </a>
       </div>
-      <nav id="mobile-menu" class="flex flex-wrap justify-center md:justify-end gap-x-4 lg:gap-x-8 gap-y-2 text-lg font-medium">
-        <a href="index.html#home" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Home</a>
-        <a href="about.html" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">About Us</a>
-        <a href="services.html" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Our Services</a>
-        <a href="contact.html" class="text-text-dark hover:text-primary transition duration-200 px-3 py-1 rounded-md">Contact Us</a>
-      </nav>
-    </div>
+      <ul class="hidden md:flex gap-4 lg:gap-8 text-lg font-medium items-center">
+        <li><a href="index.html#home" class="hover:text-primary transition">Home</a></li>
+        <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
+        <li><a href="services.html" class="text-primary hover:text-accent transition">Our Services</a></li>
+        <li><a href="knowledge.html" class="hover:text-primary transition">Vastu Knowledge</a></li>
+        <li><a href="contact.html" class="hover:text-primary transition">Contact Us</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section-container" style="min-height: 60vh; background-image: url('images/temple.png'), url('LAYOUT.png'); background-size: cover, 60vh; background-position: center, center; background-repeat: no-repeat, no-repeat;">
-    <div class="max-w-3xl mx-auto px-4 hero-content">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg animate-fade-in">Our Vastu Services</h1>
-      <p class="text-xl md:text-2xl text-white mb-8 animate-fade-in" style="transition-delay: 0.2s;">Comprehensive Solutions for Every Space</p>
+  <section class="relative flex items-center justify-center min-h-[40vh] text-center bg-[url('temple.png')] bg-cover bg-center">
+    <div class="bg-white/80 rounded-xl shadow-lg p-8 max-w-xl mx-auto mt-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-2">Our Vastu Services</h1>
+      <p class="text-lg md:text-xl text-gray-700 mb-2">Unlock the full potential of your space with expert Vastu guidance for homes, businesses, and new projects. Our services are designed to bring harmony, prosperity, and well-being to every environment.</p>
     </div>
   </section>
 
-  <!-- Services Overview Section -->
-  <section class="py-16 bg-background-light animate-on-scroll">
+  <!-- Services Grid -->
+  <section class="py-16 bg-background-light">
     <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-12">What We Offer</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center card-hover-effect border-t-4 border-primary">
-          <img src="images/service-home-placeholder.png" alt="Residential Vastu" class="w-16 h-16 mx-auto mb-4" />
-          <h3 class="text-2xl font-bold text-secondary mb-2">Residential Vastu</h3>
-          <p class="text-text-dark">Optimize your home for peace and prosperity.</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-10">What We Offer</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-primary">
+          <span class="text-4xl mb-3">🏠</span>
+          <h3 class="text-xl font-bold text-primary mb-2">Residential Vastu</h3>
+          <p class="text-text-muted text-sm">Personalized analysis and remedies to create a peaceful, healthy, and prosperous home. We guide you on room placement, colors, and energy flow for maximum harmony.</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-accent">
-          <img src="images/service-office-placeholder.png" alt="Commercial Vastu" class="w-16 h-16 mx-auto mb-4" />
-          <h3 class="text-2xl font-bold text-secondary mb-2">Commercial Vastu</h3>
-          <p class="text-text-dark">Enhance business growth and workplace harmony.</p>
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-accent">
+          <span class="text-4xl mb-3">🏢</span>
+          <h3 class="text-xl font-bold text-accent mb-2">Commercial Vastu</h3>
+          <p class="text-text-muted text-sm">Boost business growth, productivity, and customer flow with Vastu solutions for offices, shops, and commercial spaces. Optimize layout and energy for success.</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-primary">
-          <img src="images/service-plot-placeholder.png" alt="Plot Selection" class="w-16 h-16 mx-auto mb-4" />
-          <h3 class="text-2xl font-bold text-secondary mb-2">Plot & New Construction</h3>
-          <p class="text-text-dark">Auspicious guidance for new beginnings.</p>
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-primary">
+          <span class="text-4xl mb-3">🏭</span>
+          <h3 class="text-xl font-bold text-primary mb-2">Industrial Vastu</h3>
+          <p class="text-text-muted text-sm">Enhance safety, efficiency, and harmony in factories and industrial units. Strategic placement of machinery and workspaces for optimal results.</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-accent">
-          <img src="images/service-consult-placeholder.png" alt="Renovation Vastu" class="w-16 h-16 mx-auto mb-4" />
-          <h3 class="text-2xl font-bold text-secondary mb-2">Renovation Vastu</h3>
-          <p class="text-text-dark">Revitalize existing spaces with Vastu corrections.</p>
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-accent">
+          <span class="text-4xl mb-3">🧱</span>
+          <h3 class="text-xl font-bold text-accent mb-2">Plot & Construction</h3>
+          <p class="text-text-muted text-sm">Expert advice for selecting plots and planning new constructions. Ensure your project starts on the right foot with auspicious orientation and design.</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-primary">
-          <img src="images/service-industrial-placeholder.png" alt="Industrial Vastu" class="w-16 h-16 mx-auto mb-4" />
-          <h3 class="text-2xl font-bold text-secondary mb-2">Industrial Vastu</h3>
-          <p class="text-text-dark">Harmonize industrial units for productivity.</p>
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-primary">
+          <span class="text-4xl mb-3">🌳</span>
+          <h3 class="text-xl font-bold text-primary mb-2">Landscape Vastu</h3>
+          <p class="text-text-muted text-sm">Create vibrant, positive outdoor spaces with Vastu-aligned landscaping. We help you position gardens, water features, and pathways for natural energy flow.</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 card-hover-effect border-t-4 border-accent">
-          <img src="images/service-landscape-placeholder.png" alt="Landscape Vastu" class="w-16 h-16 mx-auto mb-4" />
-          <h3 class="text-2xl font-bold text-secondary mb-2">Landscape Vastu</h3>
-          <p class="text-text-dark">Create positive energy in outdoor spaces.</p>
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-accent">
+          <span class="text-4xl mb-3">🔄</span>
+          <h3 class="text-xl font-bold text-accent mb-2">Vastu for Renovation</h3>
+          <p class="text-text-muted text-sm">Revitalize existing spaces with Vastu corrections during renovations. Improve energy flow and correct imbalances for a fresh start.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Residential Vastu Section -->
-  <section id="residential" class="py-16 bg-orange-50 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Residential Vastu Consultation</h2>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div>
-          <h3 class="text-2xl font-bold text-orange-700 mb-6">Transform Your Home</h3>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            Your home should be a sanctuary of peace, harmony, and prosperity. Our residential Vastu consultation ensures that every room, every corner, and every element in your home works together to create positive energy flow.
-          </p>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            We analyze your existing space or guide you in designing a new home that aligns with Vastu principles, ensuring health, wealth, and happiness for your family.
-          </p>
-          
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h4 class="text-xl font-bold text-orange-700 mb-4">What We Cover:</h4>
-            <ul class="space-y-3 text-gray-700">
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Complete home analysis and energy mapping</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Room-by-room placement recommendations</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Color and material selection guidance</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Furniture arrangement and positioning</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Remedy solutions for existing issues</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Follow-up support and monitoring</span>
-              </li>
-            </ul>
-          </div>
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-primary">
+          <span class="text-4xl mb-3">✨</span>
+          <h3 class="text-xl font-bold text-primary mb-2">Vastu Remedies</h3>
+          <p class="text-text-muted text-sm">Practical solutions for common Vastu issues. Simple remedies to harmonize your space and remove obstacles to well-being.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Commercial Vastu Section -->
-  <section id="commercial" class="py-16 bg-white px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Commercial Vastu Services</h2>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <h3 class="text-2xl font-bold text-orange-700 mb-6">Business Prosperity</h3>
-          
-          <div class="space-y-6">
-            <div class="border border-orange-200 rounded-lg p-6">
-              <h4 class="text-lg font-bold text-orange-700 mb-2">Office Spaces</h4>
-              <p class="text-gray-600 mb-4">Optimize your workplace for productivity and success</p>
-              <ul class="text-sm text-gray-700 space-y-1">
-                <li>• Reception and entrance optimization</li>
-                <li>• CEO/Manager cabin placement</li>
-                <li>• Employee seating arrangements</li>
-                <li>• Conference room positioning</li>
-              </ul>
-            </div>
-            
-            <div class="border border-orange-200 rounded-lg p-6">
-              <h4 class="text-lg font-bold text-orange-700 mb-2">Retail & Shops</h4>
-              <p class="text-gray-600 mb-4">Boost sales and customer flow</p>
-              <ul class="text-sm text-gray-700 space-y-1">
-                <li>• Cash counter placement</li>
-                <li>• Product display optimization</li>
-                <li>• Customer flow enhancement</li>
-                <li>• Storage area positioning</li>
-              </ul>
-            </div>
-            
-            <div class="border border-orange-200 rounded-lg p-6">
-              <h4 class="text-lg font-bold text-orange-700 mb-2">Industrial Units</h4>
-              <p class="text-gray-600 mb-4">Ensure safety and operational efficiency</p>
-              <ul class="text-sm text-gray-700 space-y-1">
-                <li>• Machinery placement</li>
-                <li>• Safety zone optimization</li>
-                <li>• Administrative area design</li>
-                <li>• Energy flow management</li>
-              </ul>
-            </div>
-          </div>
+  <!-- Residential Vastu Consultation Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-6 text-center">Residential Vastu Consultation</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <!-- Transform Your Home -->
+        <div class="bg-background-light rounded-xl shadow-lg p-6 flex flex-col justify-center">
+          <h3 class="text-2xl font-bold text-primary mb-4">Transform Your Home</h3>
+          <p class="text-text-dark mb-4">Your home should be a sanctuary of peace, harmony, and prosperity. Our residential Vastu consultation ensures that every room, every corner, and every element in your home works together to create positive energy flow.</p>
+          <p class="text-text-dark">We analyze your existing space or guide you in designing a new home that aligns with Vastu principles, ensuring health, wealth, and happiness for your family.</p>
         </div>
-        
-        <div>
-          <h3 class="text-2xl font-bold text-orange-700 mb-6">Why Commercial Vastu?</h3>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            In today's competitive business environment, every advantage counts. Vastu-compliant commercial spaces have shown significant improvements in employee productivity, customer satisfaction, and overall business growth.
-          </p>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            Our commercial Vastu services help businesses create environments that support success, reduce stress, and enhance profitability through strategic space utilization and energy optimization.
-          </p>
-          
-          <div class="bg-orange-50 p-6 rounded-lg">
-            <h4 class="text-xl font-bold text-orange-700 mb-4">Business Benefits:</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="flex items-center">
-                <div class="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs">↑</div>
-                <span class="text-gray-700">Increased productivity</span>
-              </div>
-              <div class="flex items-center">
-                <div class="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs">↑</div>
-                <span class="text-gray-700">Better employee retention</span>
-              </div>
-              <div class="flex items-center">
-                <div class="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs">↑</div>
-                <span class="text-gray-700">Enhanced customer flow</span>
-              </div>
-              <div class="flex items-center">
-                <div class="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs">↑</div>
-                <span class="text-gray-700">Improved profitability</span>
-              </div>
-              <div class="flex items-center">
-                <div class="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs">↓</div>
-                <span class="text-gray-700">Reduced conflicts</span>
-              </div>
-              <div class="flex items-center">
-                <div class="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs">↓</div>
-                <span class="text-gray-700">Lower stress levels</span>
-              </div>
-            </div>
-          </div>
+        <!-- What We Cover Checklist -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h4 class="text-xl font-bold text-accent mb-4">What We Cover</h4>
+          <ul class="space-y-3 text-text-dark">
+            <li class="flex items-start"><span class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-base">✓</span>Complete home analysis and energy mapping</li>
+            <li class="flex items-start"><span class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-base">✓</span>Room-by-room placement recommendations</li>
+            <li class="flex items-start"><span class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-base">✓</span>Color and material selection guidance</li>
+            <li class="flex items-start"><span class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-base">✓</span>Furniture arrangement and positioning</li>
+            <li class="flex items-start"><span class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-base">✓</span>Remedy solutions for existing issues</li>
+            <li class="flex items-start"><span class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 text-base">✓</span>Follow-up support and monitoring</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Consultation Process Steps -->
+      <h3 class="text-2xl font-bold text-primary mb-6 text-center">Our Consultation Process</h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-primary">
+          <span class="text-3xl mb-2">1</span>
+          <h4 class="font-bold text-primary mb-1">Initial Contact</h4>
+          <p class="text-text-muted text-sm text-center">Schedule your free consultation and discuss your requirements</p>
+        </div>
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-accent">
+          <span class="text-3xl mb-2">2</span>
+          <h4 class="font-bold text-accent mb-1">Site Analysis</h4>
+          <p class="text-text-muted text-sm text-center">Comprehensive assessment of your space and energy patterns</p>
+        </div>
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-primary">
+          <span class="text-3xl mb-2">3</span>
+          <h4 class="font-bold text-primary mb-1">Recommendations</h4>
+          <p class="text-text-muted text-sm text-center">Detailed report with specific remedies and implementation plan</p>
+        </div>
+        <div class="simple-card flex flex-col items-center card-hover-effect border-b-4 border-accent">
+          <span class="text-3xl mb-2">4</span>
+          <h4 class="font-bold text-accent mb-1">Implementation</h4>
+          <p class="text-text-muted text-sm text-center">Ongoing support during implementation and follow-up services</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Plot Selection Section -->
-  <section id="plot" class="py-16 bg-orange-100 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Plot Selection & Analysis</h2>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div>
-          <h3 class="text-2xl font-bold text-orange-700 mb-6">Choose the Perfect Plot</h3>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            The foundation of a Vastu-compliant building starts with the right plot. Our plot selection service ensures you choose land that supports your dreams and aspirations.
-          </p>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            We analyze plot orientation, soil quality, surrounding environment, and energy patterns to recommend the most auspicious plot for your project.
-          </p>
-          
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h4 class="text-xl font-bold text-orange-700 mb-4">Plot Analysis Includes:</h4>
-            <ul class="space-y-3 text-gray-700">
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Directional analysis and orientation</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Soil quality and energy assessment</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Surrounding environment analysis</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Road and water body positioning</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Remedy recommendations for imperfect plots</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-orange-600 text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-xs">✓</div>
-                <span>Detailed report with recommendations</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <h3 class="text-2xl font-bold text-orange-700 mb-6">Ideal Plot Characteristics</h3>
-          
-          <div class="space-y-6">
-            <div class="border border-green-200 rounded-lg p-4 bg-green-50">
-              <h4 class="text-lg font-bold text-green-700 mb-2">✓ Preferred Features</h4>
-              <ul class="text-sm text-gray-700 space-y-1">
-                <li>• Square or rectangular shape</li>
-                <li>• North or East facing entrance</li>
-                <li>• Higher elevation in South-West</li>
-                <li>• Clean, fertile soil</li>
-                <li>• Good drainage system</li>
-              </ul>
-            </div>
-            
-            <div class="border border-red-200 rounded-lg p-4 bg-red-50">
-              <h4 class="text-lg font-bold text-red-700 mb-2">✗ Avoid These</h4>
-              <ul class="text-sm text-gray-700 space-y-1">
-                <li>• Triangular or irregular shapes</li>
-                <li>• South or West facing entrance</li>
-                <li>• Lower elevation in North-East</li>
-                <li>• Rocky or barren soil</li>
-                <li>• Poor drainage or waterlogging</li>
-              </ul>
-            </div>
-            
-            <div class="border border-orange-200 rounded-lg p-4">
-              <h4 class="text-lg font-bold text-orange-700 mb-2">Package Details</h4>
-              <p class="text-gray-600 mb-3">Complete plot analysis and selection service</p>
-              <ul class="text-sm text-gray-700 space-y-1 mb-4">
-                <li>• Site visit and assessment</li>
-                <li>• Multiple plot comparison</li>
-                <li>• Detailed analysis report</li>
-                <li>• Remedy recommendations</li>
-                <li>• Construction guidance</li>
-              </ul>
-              <p class="text-orange-600 font-bold">Starting from ₹10,000</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Consultation Services Section -->
-  <section id="consultation" class="py-16 bg-white px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Consultation Services</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-bold text-orange-700 mb-4">Initial Assessment</h3>
-          <p class="text-gray-700 mb-4">Free preliminary evaluation of your space and requirements.</p>
-          <ul class="text-sm text-gray-600 space-y-1 mb-4">
-            <li>• Basic energy analysis</li>
-            <li>• Preliminary recommendations</li>
-            <li>• Service package discussion</li>
-            <li>• No obligation consultation</li>
-          </ul>
-          <p class="text-orange-600 font-bold">FREE</p>
-        </div>
-        
-        <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-bold text-orange-700 mb-4">Detailed Consultation</h3>
-          <p class="text-gray-700 mb-4">Comprehensive analysis with detailed recommendations.</p>
-          <ul class="text-sm text-gray-600 space-y-1 mb-4">
-            <li>• Complete space analysis</li>
-            <li>• Detailed remedy plan</li>
-            <li>• Written report</li>
-            <li>• Implementation guidance</li>
-          </ul>
-          <p class="text-orange-600 font-bold">₹3,000 - ₹8,000</p>
-        </div>
-        
-        <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-bold text-orange-700 mb-4">Ongoing Support</h3>
-          <p class="text-gray-700 mb-4">Continued guidance during implementation phase.</p>
-          <ul class="text-sm text-gray-600 space-y-1 mb-4">
-            <li>• Regular follow-ups</li>
-            <li>• Progress monitoring</li>
-            <li>• Adjustment recommendations</li>
-            <li>• Phone/email support</li>
-          </ul>
-          <p class="text-orange-600 font-bold">₹2,000/month</p>
-        </div>
-        
-        <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-bold text-orange-700 mb-4">Online Consultation</h3>
-          <p class="text-gray-700 mb-4">Virtual consultation for remote clients.</p>
-          <ul class="text-sm text-gray-600 space-y-1 mb-4">
-            <li>• Video call consultation</li>
-            <li>• Photo-based analysis</li>
-            <li>• Digital report delivery</li>
-            <li>• Email support</li>
-          </ul>
-          <p class="text-orange-600 font-bold">₹2,500 - ₹6,000</p>
-        </div>
-        
-        <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-bold text-orange-700 mb-4">Emergency Consultation</h3>
-          <p class="text-gray-700 mb-4">Quick solutions for urgent Vastu issues.</p>
-          <ul class="text-sm text-gray-600 space-y-1 mb-4">
-            <li>• Same-day consultation</li>
-            <li>• Immediate remedies</li>
-            <li>• Priority support</li>
-            <li>• Quick implementation</li>
-          </ul>
-          <p class="text-orange-600 font-bold">₹5,000 - ₹10,000</p>
-        </div>
-        
-        <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
-          <h3 class="text-xl font-bold text-orange-700 mb-4">Corporate Packages</h3>
-          <p class="text-gray-700 mb-4">Specialized services for businesses and organizations.</p>
-          <ul class="text-sm text-gray-600 space-y-1 mb-4">
-            <li>• Multiple location analysis</li>
-            <li>• Employee training</li>
-            <li>• Annual maintenance</li>
-            <li>• Dedicated consultant</li>
-          </ul>
-          <p class="text-orange-600 font-bold">Custom Pricing</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process Section -->
-  <section class="py-16 bg-orange-50 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-orange-800 mb-12 text-center">Our Consultation Process</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="text-center">
-          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
-          <h3 class="text-xl font-bold text-orange-700 mb-2">Initial Contact</h3>
-          <p class="text-gray-600">Schedule your free consultation and discuss your requirements</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
-          <h3 class="text-xl font-bold text-orange-700 mb-2">Site Analysis</h3>
-          <p class="text-gray-600">Comprehensive assessment of your space and energy patterns</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
-          <h3 class="text-xl font-bold text-orange-700 mb-2">Recommendations</h3>
-          <p class="text-gray-600">Detailed report with specific remedies and implementation plan</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="bg-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
-          <h3 class="text-xl font-bold text-orange-700 mb-2">Implementation</h3>
-          <p class="text-gray-600">Ongoing support during implementation and follow-up services</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action Section -->
-  <section class="py-16 section-bg text-center">
-    <div class="max-w-2xl mx-auto">
-      <h2 class="text-3xl font-bold text-orange-900 mb-4">Ready to Transform Your Space?</h2>
-      <p class="text-xl text-gray-800 mb-8">Choose the perfect service package for your needs and start your journey towards harmony and prosperity.</p>
-      <a href="contact.html" class="bg-orange-700 text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-orange-800 transition">Book Free Consultation</a>
+  <!-- Call to Action -->
+  <section class="py-16 bg-primary text-white text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Ready to Transform Your Space?</h2>
+      <p class="text-lg mb-8">Book a personalized Vastu consultation and unlock your space's full potential.</p>
+      <a href="contact.html" class="btn-primary text-white px-8 py-3 rounded-full font-semibold shadow-md">Book Your Consultation</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-secondary text-white py-10 text-center">
+  <footer class="bg-secondary text-white py-10 text-center mt-8">
     <div class="max-w-7xl mx-auto px-4">
       <img src="https://placehold.co/40x40/26A69A/FFFFFF?text=VD" alt="Vastu Designer Logo" class="w-10 h-10 mx-auto mb-6 opacity-80 rounded-full" />
       <div class="mb-3">
